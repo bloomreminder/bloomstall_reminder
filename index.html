@@ -24,6 +24,11 @@
         .close-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; color: white; cursor: pointer; padding: 0; width: 30px; height: 30px; }
         
         .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); width: 90%; max-width: 380px; border: 1px solid #fce4ec; box-sizing: border-box; }
+        
+        /* Back Button Styles */
+        .back-btn { background: #f0f0f0; border: none; color: #00382f; font-weight: 600; font-size: 0.85rem; padding: 8px 12px; border-radius: 8px; cursor: pointer; margin-bottom: 15px; display: inline-flex; align-items: center; gap: 5px; }
+        .back-btn:hover { background: #e4e4e4; }
+
         h2 { color: #00382f; text-align: center; margin-bottom: 10px; font-weight: 700; font-size: 1.25rem; }
         
         .help-trigger { background: none; border: none; color: #00382f; font-size: 0.8em; text-decoration: underline; cursor: pointer; display: block; margin: 0 auto 20px auto; padding: 0; box-shadow: none; width: auto; font-weight: 600; }
@@ -51,8 +56,11 @@
 </div>
 
 <div class="container">
+    <!-- Back Button Added Here -->
+   <a href="https://bloomreminder.github.io/bloomstall/"> <button class="back-btn" onclick="goBack()">&#8592; Back to App</button></a>
+
     <h2>CREATE A "SEND FLOWERS FROM BLOOMSTALL" REMINDER</h2>
-    <button class="help-trigger" onclick="toggleModal(true)">READ NOTE AGAIN</button>
+
     
     <label for="eventDate">When is the big day?</label>
     <input type="date" id="eventDate">
@@ -80,6 +88,14 @@
 
     function toggleModal(show) {
         document.getElementById('installModal').style.display = show ? 'flex' : 'none';
+    }
+
+    function goBack() {
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = "about:blank"; // Fallback if no history exists
+        }
     }
 
     function generateReminder() {
